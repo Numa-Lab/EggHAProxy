@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2022-02-27T07:27:46+09:00",
+    "name": "HAProxy",
+    "author": "kamesuta@gmail.com",
+    "description": "HAProxy\u30d7\u30ed\u30ad\u30b7(Java\u7248\u7528)",
+    "features": null,
+    "images": [
+        "ghcr.io\/numa-lab\/docker-haproxy:latest"
+    ],
+    "file_denylist": [],
+    "startup": "haproxy -W -db -f \/home\/container\/haproxy\/haproxy.conf",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \") forked\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\nif [ ! -f haproxy\/haproxy.conf ]; then\r\n    echo -e \"Downloading haproxy.cfg\"\r\n    mkdir haproxy\r\n    curl -o haproxy\/haproxy.cfg https:\/\/raw.githubusercontent.com\/Numa-Lab\/EggHAProxy\/master\/haproxy\/haproxy.conf\r\nfi",
+            "container": "ghcr.io\/pterodactyl\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": []
+}
